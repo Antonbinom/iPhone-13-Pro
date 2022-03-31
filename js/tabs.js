@@ -3,6 +3,7 @@ const tabsFunc = () => {
 	const tabsTitle = document.querySelector('.card-details__title');
 	const tabsPrice = document.querySelector('.card-details__price');
 	const tabsImage = document.querySelector('.card__image_item');
+
 	const tabsOptions = [{
 			name: 'Graphite',
 			memory: '64',
@@ -28,6 +29,8 @@ const tabsFunc = () => {
 		tabsPrice.textContent = `${tabsOptions[index].price}₽`;
 
 		tabsImage.setAttribute('src', tabsOptions[index].image);
+
+		document.title = tabsTitle.textContent;
 	};
 
 	function changeActive(indexTab) { // функция по вкл/выкл класс active
