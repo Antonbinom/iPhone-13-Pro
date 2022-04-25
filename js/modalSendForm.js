@@ -18,7 +18,7 @@ const modalSendForm = () => {
 	modalForm.addEventListener('submit', (e) => {
 		e.preventDefault();
 
-		const labels = modal.querySelectorAll('.modla__label');
+		const labels = modal.querySelectorAll('.modal__label');
 
 		const sendMessage = {};
 
