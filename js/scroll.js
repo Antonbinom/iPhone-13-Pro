@@ -1,33 +1,29 @@
 const scrollFunc = () => {
-	// const links = document.querySelectorAll('a'); // первый способ
-	const links = document.querySelectorAll('.header-menu__item a');
-	const linkChar = document.querySelector('.card-details__link-characteristics');
-	const arrayLinks = [...links, linkChar];
+	const links = document.querySelectorAll('.header-menu__item a')
+	const details = document.querySelector('.card-details__link-characteristics')
+	const arrayWithLinks = [...links, details]
 
-	seamless.polyfill();
-	// links.forEach((element) => { // первый способ
-	arrayLinks.forEach((element) => {
+	seamless.polyfill()
 
-		element.addEventListener('click', (event) => {
-			event.preventDefault();
+	arrayWithLinks.forEach(link => {
+		link.addEventListener('click', event => {
+			event.preventDefault()
 
-			const id = element.getAttribute('href').substring(1);
-			const section = document.getElementById(id);
-
+			const id = link.getAttribute('href').substring(1)
+			const section = document.getElementById(id)
 			if (section) {
 				seamless.elementScrollIntoView(section, {
 					behavior: 'smooth',
 					block: 'start'
-				});
+				})
 			} else {
-				seamless.elementScrollIntoView(document.querySelector('#characteristics'), {
-					behavior: 'smooth',
-					block: 'center',
-					inline: 'center'
-				});
+				seamless.elementScrollIntoView(document.querySelector("#characteristics"), {
+					behavior: "smooth",
+					block: "start",
+				})
 			}
-		});
-	});
-};
+		})
+	})
+}
 
-scrollFunc();
+scrollFunc()

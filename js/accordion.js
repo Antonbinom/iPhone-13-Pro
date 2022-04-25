@@ -1,18 +1,31 @@
-const accordFunc = () => {
-	const charItems = document.querySelectorAll('.characteristics__item');
+const accordionFunc = () => {
+	const chItems = document.querySelectorAll('.characteristics__item');
 
-	charItems.forEach(item => {
-		const charBtn = item.querySelector('.characteristics__title');
-		const charContent = item.querySelector('.characteristics__description');
-		charBtn.addEventListener('click', () => {
-			if (charContent.classList.contains('open')) {
-				charContent.style.height = '';
-			} else {
-				charContent.style.height = charContent.scrollHeight + 'px';
-			}
-			charBtn.classList.toggle('active');
-			charContent.classList.toggle('open');
+	chItems.forEach((item, i) => {
+		const btn = item.querySelector('.characteristics__title');
+
+		btn.addEventListener('click', () => {
+			toggleClassAccordion(i);
 		});
 	});
+
+	function toggleClassAccordion(index) {
+		chItems.forEach((item, i) => {
+			const chList = item.querySelector('.characteristics__description');
+
+			if (index === i) {
+				if (chList.classList.contains('open')) {
+					chList.style.height = '';
+				} else {
+					chList.style.height = chList.scrollHeight + 'px';
+				}
+				chList.classList.toggle('open');
+			} else {
+				chList.style.height = '';
+				chList.classList.remove('open');
+
+			}
+		});
+	}
 };
-accordFunc();
+accordionFunc();

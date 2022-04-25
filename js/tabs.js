@@ -1,55 +1,56 @@
 const tabsFunc = () => {
-	const tabs = document.querySelectorAll('.card-detail__change'); // получаем все элементы с классом card-detail__change
-	const tabsTitle = document.querySelector('.card-details__title');
-	const tabsPrice = document.querySelector('.card-details__price');
-	const tabsImage = document.querySelector('.card__image_item');
+	const tabsBtn = document.querySelectorAll('.card-detail__change')
+	const cardTitle = document.querySelector('.card-details__title')
+	const cardPrice = document.querySelector('.card-details__price')
+	const cardImage = document.querySelector('.card__image_item')
+	const title = document.querySelector('title')
 
 	const tabsOptions = [{
 			name: 'Graphite',
-			memory: '64',
-			price: 69000,
+			memory: 128,
+			price: 80000,
 			image: 'img/iPhone-graphite.webp'
 		},
 		{
 			name: 'Silver',
-			memory: '128',
-			price: 79000,
+			memory: 256,
+			price: 90000,
 			image: 'img/iPhone-silver.webp'
 		},
 		{
 			name: 'Sierra Blue',
-			memory: '256',
-			price: 99000,
+			memory: 512,
+			price: 100000,
 			image: 'img/iPhone-sierra_blue.webp'
 		}
-	];
+	]
 
-	const changeContent = (index) => {
-		tabsTitle.textContent = `Смартфон Apple iPhone 13 Pro ${tabsOptions[index].memory}GB ${tabsOptions[index].name}`;
-		tabsPrice.textContent = `${tabsOptions[index].price}₽`;
-
-		tabsImage.setAttribute('src', tabsOptions[index].image);
-
-		document.title = tabsTitle.textContent;
-	};
-
-	function changeActive(indexTab) { // функция по вкл/выкл класс active
-		tabs.forEach((tab, index) => { // перебираем все элементы с классом card-detail__change
-			tab.classList.remove('active'); // удаляем класс active у элемента на который нажали
-			if (index === indexTab) { // если индекс элемента равен параметру функции, то...
-				tab.classList.add('active'); // добавляем элементу класс active
+	const changeActiveTabs = (indexClickedTab) => {
+		tabsBtn.forEach((btn, idx) => {
+			btn.classList.remove('active')
+			if (idx === indexClickedTab) {
+				btn.classList.add('active')
 			}
-		});
-		changeContent(indexTab);
+		})
+
+		changeContent(indexClickedTab)
+
 	}
 
-	tabs.forEach((tab, index) => { // перебираем все элементы с классом card-detail__change
-		tab.addEventListener('click', () => { // при клике на один из элементов
-			changeActive(index); // выполняем функцию changeActive и передаем параметр index в функцию changeActive
-		});
-	});
+	const changeContent = (idx) => {
+		title.textContent = `IPhone ${tabsOptions[idx].name}`
+		cardTitle.textContent = `Смартфон Apple iPhone 13 Pro ${tabsOptions[idx].memory}GB ${tabsOptions[idx].name}`
+		cardPrice.textContent = `${tabsOptions[idx].price}₽`
+		cardImage.setAttribute('src', tabsOptions[idx].image)
+	}
 
-	changeContent(0);
-};
+	tabsBtn.forEach((btn, idx) => {
+		btn.addEventListener('click', () => {
+			changeActiveTabs(idx)
+		})
+	})
 
-tabsFunc();
+	changeContent(0)
+}
+
+tabsFunc()
