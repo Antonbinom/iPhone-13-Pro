@@ -19,4 +19,4 @@
 - Fetch
 - Инкапсуляция 
 
-## <a href="https://antonbinom.github.io/iPhone-13-Pro/">Ссылка</a>
+## <a href="https://i-phone-13-fvr76qugb-antonbinom.vercel.app/">Ссылка</a>
